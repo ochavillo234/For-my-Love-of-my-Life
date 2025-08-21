@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Floating Heart Particles & Ordered Text</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Background Gradient Animation */
+    body {
+      background: linear-gradient(270deg, #4ade80, #3b82f6, #8b5cf6, #ec4899);
+      background-size: 800% 800%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      flex-direction: column;
+      padding: 2rem 0;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Particle Container */
+    .particle-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    /* Heart shape particle (pop randomly) */
+.particle {
+  position: absolute;
+  width: 20px;
+  height: 18px;
+  background-color: #fff;
+  transform: rotate(-45deg) scale(0);
+  opacity: 0;
+  animation: popParticle 4s infinite ease-in-out;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+  z-index: 1;
+}
+
+.particle::before,
+.particle::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.particle::before {
+  top: -9px;
+  left: 0;
+}
+
+.particle::after {
+  top: 0;
+  left: 9px;
+}
+
+@keyframes popParticle {
+  0% {
+    transform: scale(0.3) rotate(-45deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.2) rotate(-45deg);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1) rotate(-45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-45deg);
+  }
+}
+
+
+    /* Main Floating Circle */
+    .glass-circle {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: scale(0.7);
+      z-index: 1;
+      animation:
+        fadeScaleIn 1.2s forwards cubic-bezier(0.22, 1, 0.36, 1),
+        floatPulse 4s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes fadeScaleIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes floatPulse {
+      0% {
+        transform: translateY(0px) scale(1);
+        box-shadow: 0 8px 32px rgba(255, 255, 255, 0.25);
+      }
+      50% {
+        transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 12px 40px rgba(255, 255, 255, 0.35);
+      }
+      100% {
+        transform: translateY(0px) scale(1);
+        box-shadow: 0 8px 32px rgba(255, 255, 255, 0.25);
+      }
+    }
+
+    /* Heart-shaped Next Button */
+    .heart-button {
+      position: relative;
+      width: 40px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border: none;
+      cursor: pointer;
+      transform: rotate(-45deg);
+      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 20px;
+      display: flex;
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      user-select: none;
+    }
+
+    .heart-button::before,
+    .heart-button::after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+      z-index: -1;
+    }
+
+    .heart-button::before {
+      top: -18px;
+      left: 0;
+    }
+
+    .heart-button::after {
+      left: 20px;
+      top: 0;
+    }
+
+    .heart-button:hover {
+      background-color: rgba(255, 255, 255, 1);
+      transform: rotate(-45deg) scale(1.1);
+    }
+
+    /* Heart Bomb Container */
+    .heart-bomb {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin-top: 20px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Each exploding heart */
+    .exploding-heart {
+      position: absolute;
+      width: 50px;
+      height: 45px;
+      background-color: #ff4d6d;
+      transform: rotate(-45deg);
+      border-radius: 0;
+      filter: drop-shadow(0 0 6px rgba(255, 77, 109, 0.8));
+      opacity: 1;
+      animation: explode 5s forwards ease-out;
+    }
+    .exploding-heart::before,
+    .exploding-heart::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 45px;
+      background-color: #ff4d6d;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      filter: drop-shadow(0 0 6px rgba(255, 77, 109, 0.8));
+    }
+    .exploding-heart::before {
+      top: -22.5px;
+      left: 0;
+    }
+    .exploding-heart::after {
+      left: 22.5px;
+      top: 0;
+    }
+
+    @keyframes explode {
+      0% {
+        opacity: 1;
+        transform: rotate(-45deg) translate(0, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: rotate(-45deg) translate(var(--tx), var(--ty)) scale(0.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle Container -->
+  <div class="particle-container" id="particleContainer"></div>
+
+  <!-- Floating Circle with Text -->
+  <div class="glass-circle" id="circleText">Loading...</div>
+
+  <!-- Next Heart Button with kiss emoji -->
+  <button id="nextButton" aria-label="Next Heart Button" title="Next" class="heart-button">😘</button>
+
+  <!-- Heart Bomb Container (hidden initially) -->
+  <div id="heartBomb" class="heart-bomb" style="display:none;"></div>
+
+  <script>
+  const messages = [
+    "Hi love!",
+    "It's been 2 years since we started this relationship ",
+    "and I just want to say that I love you so so much mine",
+    "I'm super duper happy na ikaw yung naging Girlfriend ko",
+    "I love you so so much love, lovey, mahal",
+    "Happy 2nd Anniversary!",
+    "I don't have a gift for you since I'm broke 😢, so I created this website to show you my love",
+    "Enjoy my lovey muahhhhhh 😘" ,
+    "You can click the button lovey muahhhhhh 😘 "
+  ];
+
+  const textEl = document.getElementById("circleText");
+  const nextButton = document.getElementById('nextButton');
+  const heartBomb = document.getElementById('heartBomb');
+
+  let messageIndex = 0;
+  let intervalId;
+
+  function updateMessage() {
+    textEl.textContent = messages[messageIndex];
+  }
+
+  function startMessageCycle() {
+    updateMessage();
+    intervalId = setInterval(() => {
+      if (messageIndex < messages.length - 1) {
+        messageIndex++;
+        updateMessage();
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 5000);
+  }
+
+  startMessageCycle();
+
+  nextButton.addEventListener('click', () => {
+    if (messageIndex < messages.length - 1) {
+      clearInterval(intervalId);
+      textEl.textContent = "Chill lang love d panga tapos yung message e 🤪 ";
+      messageIndex = 0;
+      setTimeout(() => {
+        startMessageCycle();
+      }, 3000);
+    } else {
+      nextButton.style.display = 'none';
+      textEl.style.display = 'none';
+      heartBomb.style.display = 'block';
+
+      const directions = [
+        {tx: '120px', ty: '0px'},
+        {tx: '-120px', ty: '0px'},
+        {tx: '0px', ty: '-120px'},
+        {tx: '0px', ty: '120px'},
+        {tx: '90px', ty: '-90px'},
+        {tx: '-90px', ty: '-90px'},
+        {tx: '90px', ty: '90px'},
+        {tx: '-90px', ty: '90px'}
+      ];
+
+      directions.forEach(dir => {
+        const heart = document.createElement('div');
+        heart.classList.add('exploding-heart');
+        heart.style.setProperty('--tx', dir.tx);
+        heart.style.setProperty('--ty', dir.ty);
+        heartBomb.appendChild(heart);
+      });
+
+      setTimeout(() => {
+        window.location.href = 'message.html';
+      }, 5000);
+    }
+  });
+
+  // 🩷 ADD HEART PARTICLES HERE
+  function createHeartParticles() {
+    const container = document.getElementById("particleContainer");
+    const numParticles = 30;
+
+    for (let i = 0; i < numParticles; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("particle");
+
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const delay = Math.random() * 5;
+      const duration = 3 + Math.random() * 3;
+
+      heart.style.top = `${top}%`;
+      heart.style.left = `${left}%`;
+      heart.style.animationDelay = `${delay}s`;
+      heart.style.animationDuration = `${duration}s`;
+
+      container.appendChild(heart);
+    }
+  }
+
+  createHeartParticles();
+  </script>
+</body>
+</html>
