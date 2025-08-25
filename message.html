@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
+    
     html, body { 
       height: 100%; 
       margin: 0; 
@@ -24,6 +25,7 @@
       overflow-y: auto; /* vertical scroll only */
     }
   </style>
+  
 </head>
 <body class="min-h-screen flex flex-col items-center bg-gradient-to-br from-pink-50 via-red-50 to-pink-100 relative">
 
@@ -45,13 +47,121 @@
     <p class="text-pink-700 mb-4">Kaya kung may away man tayo, let’s try na maayos agad, mababa man o malaki. I don’t want na matapos yung meron tayo dahil lang sa maliliit na bagay na kayang-kayang solusyonan, ok? Very good.</p>
     <p class="text-pink-700 mb-4">I think that’s all for this long message ko for you, my love. Happy 2nd Anniversary, love! Sobrang mahal na mahal kita, lagi mo itatak sa puso at isip mo yan, maem. I’m so lucky to have you as my girlfriend, and I can’t wait na makasama ka at matupad ang mga goals natin sa isa’t isa. I love you so much ❤️</p>
 
+<!-- Buttons INSIDE the box -->
+<div class="mt-6 flex justify-center gap-4">
+  <button onclick="openModal('msg1')" 
+    class="px-5 py-2 bg-pink-600 text-white font-semibold rounded-xl shadow hover:bg-pink-700 transition">
+    My Message to you
+  </button>
+ <button 
+  onclick="window.location.href='together.html'" 
+  class="px-5 py-2 bg-pink-200 text-pink-700 font-semibold rounded-xl shadow hover:bg-pink-300 transition">
+  Our Photos Together
+</button>
 
-    <!-- Buttons INSIDE the box -->
-  <div class="mt-6 flex justify-center gap-4">
-    <button class="px-5 py-2 bg-pink-600 text-white font-semibold rounded-xl shadow hover:bg-pink-700 transition">My Message to U</button>
-    <button class="px-5 py-2 bg-pink-200 text-pink-700 font-semibold rounded-xl shadow hover:bg-pink-300 transition">My Message to Us</button>
-  </div>
+   <button onclick="openModal('msg2')" 
+    class="px-5 py-2 bg-pink-200 text-pink-700 font-semibold rounded-xl shadow hover:bg-pink-300 transition">
+    My Message to us
+  </button>
+</div>
 </div>  
+
+<!-- Popup Modals -->
+<div id="msg1" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
+  <div class="relative bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-3xl shadow-2xl w-[90%] max-w-[500px] text-center border border-pink-200">
+
+    <!-- Decorative Heart -->
+    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-pink-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+      ❤️
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-2xl font-extrabold text-pink-600 mb-4 mt-4"> My Message for My Beautiful and Best Girlfriend</h3>
+
+    <!-- Message -->
+    <div class="max-h-[400px] overflow-y-auto px-2 text-left">
+      <p class="text-pink-600 leading-relaxed whitespace-pre-line">
+Hi love, happy 2nd anniversary to us!  
+Grabe, sobrang tagal na natin, no? My message to you is… madami po ate. So you already know how much I love you, right? Kaya lagi mong tatandaan yan magkaaway man tayo o hindi. I’m super duper lucky to have you as my girlfriend.
+
+Sobrang saya ko simula nung nagkaroon tayo ng something. I never wake up without a smile, and I always get excited to go to school just to see you. Hanggang ngayon, ganun pa rin naman kaya sana ikaw din.
+
+Today, we’re celebrating our 2nd anniversary. Kaso, hindi tayo makakapaggala kasi you know, may OJT at walang budget. So instead, I created this website for you dito ko nalang ilalagay yung mga want kona sabihin kesa sa sulat letter kase why not? programmer kase ako e tas sobrang sobrang mahal kita kaya sana magustuhan mo ket medjo d maganda yung design. Sobrang tagal na natin love, and I really hope mas lalo pa tayong magtagal kase simula nung lumalim na yung relationship natin, I just can’t imagine my future without you.
+
+I can’t wait to live with you sa iisang bahay soon doing everything together like eating, sleeping, grocery shopping, and you cooking ulam for me (naks baka future chef ko yarn) Kaya let’s always stay strong love ok?. Kahit anong mangyari sa atin, let’s not give up easily if the problem kaya naman ayusin kaagad okay?
+
+I think okay na siguro to, noh? Madami pa akong sasabihin pero don na lang yung iba sa isa. Just always remember that I love you so, so much love, lovey, mine, mahal. You’ll always be in my mind and heart.
+
+Happy 2nd Anniversary, loveyy I love you so much. 
+      </p>
+    </div>
+
+    <!-- Close Button -->
+    <button onclick="closeModal('msg1')" 
+      class="mt-6 px-6 py-2 bg-pink-600 text-white font-semibold rounded-full shadow hover:bg-pink-700 transition">
+      Close
+    </button>
+  </div>
+</div>
+
+
+<div id="msg2" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
+  <div class="relative bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-3xl shadow-2xl w-[90%] max-w-[500px] text-center border border-pink-200">
+
+    <!-- Decorative Heart -->
+    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-pink-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+      💞
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-2xl font-extrabold text-pink-600 mb-4 mt-4">My Message to Us</h3>
+
+    <!-- Message -->
+    <div class="max-h-[400px] overflow-y-auto px-2 text-left">
+      <p class="text-pink-600 leading-relaxed whitespace-pre-line">
+Hi loveyyyy, so today we were celebrating our 2nd anniversary sa OJT no? Kase wala us masyadong pera lalo na me kase wala na me work, so sorry love, pero let’s wait ng kaunti, magkakapera din me saka us mag-cecelebrate ok?  
+
+So Happy 2nd Anniversary mahal For the 3rd time na sasabihin ko to sobrang tagal na natin, and sana lalo pa us tumagal sa relationship nato.  
+
+I just wanna say na sa 2 years relationship natin, madami na tayong pinagdaanan right? Mga away, tampuhan, inis, restrict, almost 3 times breaking up, pinabayaan ka, pinag-overthink mo ako ng malala, and blocking me? I didn't even know that till sinabi mo saakin. Ang dami na nangyari satin sa loob ng 2 years, and possible na mauulit yung isa sa mga yan in the future kaya let’s try na wag na maulit.  
+
+I will try my best, and you will try your best too. Kasi I know parehas natin ayaw na mangyari ulit yun, right? I know rin naman na gusto mo tayo sa huli, right?. I know na you can see the future with me in your life, right?. I know we both love each other so much, kahit hindi natin sabihin at pinapakita. Kaya let’s try our best for this relationship.  
+
+Ayaw ko na if may away tayo ako lang yung nagta try to fix it. Kasalanan ko man o kasalanan mo, dapat parehas tayo. Naiintindihan ko naman na maiikli sobra sobra ang PATIENCE mo, pero if ikaw ang may MALI, just don’t give up easily when you cant suyo suyo me or pakita mo boobies mo or bj mo me instant tanggal hinanakit ko sayo char (seryoso try monga minsan malay mo mag work if hindi atleast you try).  
+
+Muka namang sweet message pa rin naman to kahit may konting sermon noh? Basta yung message ko for both of us is let’s try our best for this healthy relationship, kasi I can’t lose you. Sobrang mahal na mahal kita, and I know mahal mo rin ako kahit nauunahan ka lang ng “B” word pag sobrang galit ka.  
+
+Happy 2nd Anniversary love I can’t wait na mag-celebrate pa us ng more, more, super more anniversaries and holidays together. Kaya let’s do our best together alright?  
+
+I love you so, so much mahal.  
+      </p>
+    </div>
+
+    <!-- Close Button -->
+    <button onclick="closeModal('msg2')" 
+      class="mt-6 px-6 py-2 bg-pink-600 text-white font-semibold rounded-full shadow hover:bg-pink-700 transition">
+      Close
+    </button>
+  </div>
+</div>
+
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).classList.remove("hidden");
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.add("hidden");
+  }
+</script>
+
+
+</body>
+</html>
+
+
+
+
 
 </body>
 </html>
